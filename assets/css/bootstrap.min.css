@@ -1628,6 +1628,8 @@ progress {
   .gy-xxl-5 {
     --bs-gutter-y: 3rem;
   }
+
+
 }
 .table {
   --bs-table-bg: transparent;
@@ -3789,6 +3791,7 @@ fieldset:disabled .btn {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  width: 100%;
 }
 .navbar-nav .nav-link {
   padding-right: 0;
@@ -9814,5 +9817,8 @@ fieldset:disabled .btn {
   .d-print-none {
     display: none !important;
   }
+ 
 }
 /*# sourceMappingURL=bootstrap.min.css.map */
+
+

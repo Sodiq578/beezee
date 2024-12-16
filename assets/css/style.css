@@ -118,37 +118,18 @@ p {
 }
 
 /*===== All Button Style =====*/
-.main-btn {
-  display: inline-block;
-  font-weight: 500;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding: 0 25px;
-  font-size: 16px;
-  line-height: 48px;
-  border-radius: 8px;
-  border: 0;
-  color: #fff;
-  cursor: pointer;
-  z-index: 5;
-  -webkit-transition: all 0.4s ease-out 0s;
-  transition: all 0.4s ease-out 0s;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#33c8c1),
-    color-stop(50%, #119bd2),
-    to(#33c8c1)
-  );
-  background: linear-gradient(to right, #33c8c1 0%, #119bd2 50%, #33c8c1 100%);
-  background-size: 200%;
+ 
+
+/* Gradientni animatsiya qilish */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
+
 
 .main-btn:hover {
   color: #fff;
@@ -159,23 +140,33 @@ p {
   .container {
     padding-left: 20px;
     padding-right: 20px;
+ 
   }
 }
 
 /*===== All Section Title Style =====*/
 .section-title .line {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#fe8464),
-    to(#fe6e9a)
-  );
-  background: linear-gradient(#fe8464 0%, #fe6e9a 100%);
-  width: 150px;
+  background: #FFD700;
+  width: 0; /* Boshlang'ich holatda chiziq 0 widthga ega */
   height: 5px;
   margin-bottom: 10px !important;
+  animation: lineAnimation 1s ease-out forwards; /* Animatsiya qo'shish */
 }
+
+/* Animatsiya qo'shish */
+@keyframes lineAnimation {
+  0% {
+    width: 0; /* Boshlang'ich holat */
+  }
+  100% {
+    width: 150px; /* Tugash holatida chiziq kengligi */
+  }
+}
+
+
+
+
+
 
 .section-title .sub-title {
   font-size: 18px;
@@ -475,14 +466,16 @@ p {
 .sticky {
   position: fixed;
   z-index: 99;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: goldenrod;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   -webkit-box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
+  border-radius: 0 0 20px 20px; /* Faqat pastki o'ng va chap burchaklarga 20px border-radius */
 }
+
 
 .sticky .navbar {
   padding: 10px 0;
@@ -501,6 +494,7 @@ p {
   position: relative;
   -webkit-transition: all 0.3s ease-out 0s;
   transition: all 0.3s ease-out 0s;
+
 }
 
 .navbar-brand {
@@ -538,6 +532,15 @@ p {
   top: -7px;
 }
 
+
+
+.hero-img{
+  /* clip-path: inset(50px 100px 50px 100px);  */
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+}
+
 @media only screen and (min-width: 768px) and (max-width: 991px),
   (max-width: 767px) {
   .navbar-collapse {
@@ -545,11 +548,12 @@ p {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: #fff;
+  
     z-index: 9;
     -webkit-box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
     box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.1);
     padding: 0px;
+    
   }
 }
 
@@ -557,7 +561,10 @@ p {
   (max-width: 767px) {
   .navbar-nav {
     padding: 20px 30px;
+    background-color: rgba(181, 177, 177, 0.763);
+    margin-top: 20px;
   }
+
 }
 
 .navbar-nav .nav-item {
@@ -638,7 +645,7 @@ p {
 }
 
 .sticky .navbar-nav .nav-item a {
-  color: #2e2e2e;
+  color: #ffffff;
 }
 
 .sticky .navbar-nav .nav-item a.active,
@@ -666,9 +673,19 @@ p {
   padding-top: 180px;
 }
 
+
+.logo{
+  width: 150px
+}
+
 @media (max-width: 767px) {
   .header-hero-content {
     padding-top: 130px;
+  }
+
+
+  .logo{
+    width: 100px
   }
 }
 
@@ -691,7 +708,7 @@ p {
 }
 
 .header-hero-content .header-title {
-  font-size: 38px;
+  font-size: 50px !important;
   font-weight: 700;
   color: #fff;
 }
@@ -794,129 +811,272 @@ p {
 /*===========================
   SERVICES css 
 ===========================*/
+
+
+
+
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+}
+
+.col-lg-4,
+.col-md-6,
+.col-sm-8 {
+  padding: 15px;
+  box-sizing: border-box;
+}
+
 .single-services {
   background-color: #fff;
-  -webkit-box-shadow: 0px 5px 30px 0px rgba(167, 167, 167, 0.16);
-  box-shadow: 0px 5px 30px 0px rgba(167, 167, 167, 0.16);
-  -webkit-transition: all 0.3s ease-out 0s;
-  transition: all 0.3s ease-out 0s;
-  padding: 50px 30px;
-  border: 2px solid transparent;
-  border-radius: 8px;
-}
-
-@media (max-width: 767px) {
-  .single-services {
-    padding: 20px 20px 30px;
-  }
-}
-
-.single-services .services-icon {
-  display: inline-block;
-  position: relative;
-}
-
-.single-services .services-icon img {
-  -webkit-transition: all 0.4s ease-out 0s;
-  transition: all 0.4s ease-out 0s;
-}
-
-.single-services .services-icon .shape-1 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.single-services .services-icon i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  font-size: 34px;
-  color: #fff;
-}
-
-.single-services .services-content .services-title a {
-  font-size: 26px;
-  font-weight: 700;
-  color: #2e2e2e;
-  -webkit-transition: all 0.3s ease-out 0s;
-  transition: all 0.3s ease-out 0s;
-}
-
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
-  .single-services .services-content .services-title a {
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 767px) {
-  .single-services .services-content .services-title a {
-    font-size: 20px;
-  }
-}
-
-.single-services .services-content .services-title a:hover {
-  color: #361cc1;
-}
-
-.single-services .services-content .text {
-  margin-top: 30px;
-}
-
-@media (max-width: 767px) {
-  .single-services .services-content .text {
-    margin-top: 20px;
-  }
-}
-
-.single-services .services-content .more {
-  margin-top: 30px;
-  font-size: 16px;
-  font-weight: 400;
-  color: #fe7a7b;
-  -webkit-transition: all 0.3s ease-out 0s;
-  transition: all 0.3s ease-out 0s;
-}
-
-.single-services .services-content .more i {
-  margin-left: 10px;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.single-services .services-content .more:hover {
-  letter-spacing: 2px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%; /* Prevent content overflow */
+  padding: 10px;
 }
 
 .single-services:hover {
-  border-color: #fe7a7b;
+  transform: translateY(-10px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.single-services:hover .services-icon .shape {
-  -webkit-transform: rotate(25deg);
-  transform: rotate(25deg);
+.services-icon img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 2px solid #f0f0f0;
+  max-height: 300px; /* Limit image height */
+  object-fit: cover;
 }
+
+.services-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.services-title a {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.services-title a:hover {
+  color: #007bff;
+}
+
+.text {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Responsive styles */
+@media (max-width: 991px) {
+  .col-lg-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .services-content {
+    padding: 15px;
+  }
+  .text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 575px) {
+  .col-sm-8 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .services-content {
+    padding: 10px;
+  }
+  .text {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+
+  .text-islom{
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 
 /*===========================
 	ABOUT css 
 ===========================*/
-.about-area {
+.shape {
+  width: 500px;
+  height: 500px;
+  background-color: goldenrod;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  border-radius: 15px;
   position: relative;
-  z-index: 5;
+  overflow: hidden; /* Rasmlarni tashqariga chiqishini oldini olish */
 }
 
-.about-shape-1 {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 35%;
-  height: 100%;
-  z-index: -1;
+.shape img {
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  transition: transform 0.5s ease; /* Zoom effekt uchun o‘tish animatsiyasi */
 }
+
+.shape:hover img {
+  transform: scale(1.2); /* Rasm 20% kattalashadi */
+}
+
+@media (max-width: 767px) {
+  .shape {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+  
+  min-height: 100vh;
+  background-color: #f0f0f0;
+}
+
+
+.about-img-uya {
+  width: 400px; /* Rasim kengligi */
+  height: auto; /* Rasim balandligi */
+  border-radius: 20px;
+}
+.about-img-uya:hover {
+  transform: scale(1.05); /* Hoverda biroz kattalashtirish */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Hoverda chuqurroq so'ya */
+}
+
+
+#remainingText {
+  margin-top: 20px;
+}
+
+.showMoreBtn {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.showMoreBtn:hover {
+  color: #0056b3;
+}
+
+
+
+
+
+
+
+
+
+
+.potensiya-cards {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.potensiya-card {
+  background: #f4e1a1; /* Goldenrod rang */
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.potensiya-card:hover {
+  transform: translateY(-10px);
+}
+
+.potensiya-card i {
+  font-size: 50px;
+  color: #c47f1b; /* Yashil altinrangga o'xshash */
+  margin-bottom: 15px;
+}
+
+.potensiya-card h5 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #4a4a4a;
+}
+
+.potensiya-card p {
+  font-size: 15px;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .potensiya-card {
+    width: 100%; /* Mobil qurilmalarda har bir kart to'liq kenglikda */
+  }
+}
+
+
+
+
+
 
 .about-shape-1 img {
   width: 100%;
@@ -932,7 +1092,7 @@ p {
   position: absolute;
   top: 0;
   left: 0;
-  width: 35%;
+  width: 50%; /* O'lchamni kattaroq qilish */
   height: 100%;
   z-index: -1;
 }
@@ -956,15 +1116,7 @@ p {
 }
 
 .about-content .main-btn {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#fe8464),
-    color-stop(50%, #fe6e9a),
-    to(#fe8464)
-  );
-  background: linear-gradient(to right, #fe8464 0%, #fe6e9a 50%, #fe8464 100%);
+  background: goldenrod;
   background-size: 200%;
   height: 50px;
   line-height: 50px;
@@ -2224,3 +2376,141 @@ p {
 .pb-225 {
   padding-bottom: 225px;
 }
+
+
+
+
+
+
+
+
+
+
+
+/* .................  */
+
+
+
+
+/* Basic styling for the form container */
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.col-lg-6 {
+  width: 50%;
+  padding: 15px;
+}
+
+/* Styling for the order info section */
+.order-info {
+  text-align: center;
+}
+
+.order-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: goldenrod;
+  margin-bottom: 20px;
+}
+
+/* Styling for the form */
+.order-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-form input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.order-form input::placeholder {
+  color: #aaa;
+}
+
+/* Styling for the button */
+.main-btn {
+  background-color: goldenrod !important;
+  color: white;
+  font-size: 18px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  margin: 30px 0;
+}
+
+
+
+.main-btn:hover {
+  background-color: goldenrod;
+}
+
+/* Styling for responsiveness */
+@media (max-width: 768px) {
+  .col-lg-6 {
+    width: 100%;
+  }
+
+  .order-title {
+    font-size: 20px;
+  }
+
+  .main-btn {
+    font-size: 16px;
+  }
+}
+
+
+
+
+.about-img{
+  border-radius: 10px;
+}
+
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+
+
+.border-rad{
+  border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

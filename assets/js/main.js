@@ -15,16 +15,17 @@
   window.onscroll = function () {
     const header_navbar = document.querySelector(".navbar-area");
     const sticky = header_navbar.offsetTop;
-    const logo = document.querySelector(".navbar-brand img");
+ 
 
     if (window.pageYOffset > sticky) {
       header_navbar.classList.add("sticky");
-      logo.src = "assets/images/logo/logo-2.svg";
+      logo.src = "assets/newImg/logo.svg";
     } else {
       header_navbar.classList.remove("sticky");
-      logo.src = "assets/images/logo/logo.svg";
+      logo.src = "assets/newImg/logo.svg";
     }
 
+    
     // show or hide the back-top-top button
     const backToTop = document.querySelector(".back-to-top");
     if (
@@ -338,3 +339,14 @@
       retina_detect: !0,
     });
 })();
+
+
+
+
+
+
+
+  // GLightbox kutubxonasini ishga tushurish
+  const lightbox = GLightbox({
+    selector: '.video-popup',  // Video linki
+  });
