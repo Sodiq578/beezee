@@ -350,3 +350,77 @@
   const lightbox = GLightbox({
     selector: '.video-popup',  // Video linki
   });
+
+
+
+
+
+
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const navLinks = document.querySelectorAll(".nav-item a");
+    const navbarToggler = document.querySelector(".navbar-toggler");
+    const navbarCollapse = document.querySelector("#navbarNav");
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (navbarToggler.offsetParent !== null) {
+          // Navbar toggler faqat kichik ekranda ko'rinadi
+          navbarCollapse.classList.remove("show");
+        }
+      });
+    });
+  });
+
+
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const counters = document.querySelectorAll(".counter-value");
+    counters.forEach(counter => {
+      let target = +counter.dataset.number;
+      let start = 0;
+      let increment = target / 100;
+  
+      function updateCounter() {
+        start += increment;
+        if (start < target) {
+          counter.textContent = Math.floor(start);
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target.toLocaleString();
+        }
+      }
+  
+      updateCounter();
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  $(document).ready(function() {
+    // Initialize phone number input with intl-tel-input
+    $("#mobile_code").intlTelInput({
+      initialCountry: "uz", // Set the default country code
+      separateDialCode: true, // Separate the country code and number
+      utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" // Enable validation and utils
+    });
+  
+    // Additional JavaScript to handle the phone input styling and behavior can be added here
+  });
+  

@@ -986,7 +986,7 @@ body {
   padding: 0;
   
   min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: #fff !important;
 }
 
 
@@ -1207,126 +1207,96 @@ body {
     padding-left: 0;
   }
 }
+.counter-wrapper {
+  padding-left: 70px;
+}
+
+@media (max-width: 991px) {
+  .counter-wrapper {
+    padding-left: 0;
+  }
+}
 
 .counter-wrapper .counter-content .text {
   margin-top: 35px;
 }
+.counter-section {
+  text-align: center;
+  padding: 50px;
+ 
+   
+  max-width: 700px;
+  margin: 50px auto;
+}
 
-.counter-wrapper .single-counter {
-  max-width: 155px;
-  height: 120px;
-  border-radius: 60px;
+.section-title {
+  font-size: 26px;
+  color: #fff;
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.counters {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.counter {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  width: 160px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
-  z-index: 5;
-  margin-top: 60px;
+  overflow: hidden;
 }
 
-@media (max-width: 767px) {
-  .counter-wrapper .single-counter {
-    max-width: 100px;
-    height: 80px;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .counter-wrapper .single-counter {
-    max-width: 155px;
-    height: 120px;
-  }
-}
-
-.counter-wrapper .single-counter::before {
-  position: absolute;
+.counter::before {
   content: "";
-  width: 155px;
-  height: 120px;
-  border-radius: 60px;
-  top: 0;
-  left: 0;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  z-index: -1;
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+ 
+  z-index: 0;
+  transform: rotate(25deg);
 }
 
-@media (max-width: 767px) {
-  .counter-wrapper .single-counter::before {
-    max-width: 100px;
-    height: 80px;
-  }
+.counter:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .counter-wrapper .single-counter::before {
-    max-width: 155px;
-    height: 120px;
-  }
+.counter-value {
+  font-size: 30px;
+  color: #ff6347;
+  font-weight: bold;
+  margin-bottom: 10px;
+  z-index: 1;
+  position: relative;
 }
 
-.counter-wrapper .single-counter.counter-color-1::before {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#33c8c1),
-    to(#119bd2)
-  );
-  background: linear-gradient(#33c8c1 0%, #119bd2 100%);
-}
-
-.counter-wrapper .single-counter.counter-color-2::before {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#fe8464),
-    to(#fe6e9a)
-  );
-  background: linear-gradient(#fe8464 0%, #fe6e9a 100%);
-}
-
-.counter-wrapper .single-counter.counter-color-3::before {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#361cc1),
-    to(#2e82ef)
-  );
-  background: linear-gradient(#361cc1 0%, #2e82ef 100%);
-}
-
-.counter-wrapper .single-counter .count {
-  font-size: 22px;
-  font-weight: 700;
-  color: #fff;
-}
-
-@media (max-width: 767px) {
-  .counter-wrapper .single-counter .count {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .counter-wrapper .single-counter .count {
-    font-size: 22px;
-  }
-}
-
-.counter-wrapper .single-counter .text {
+.counter-label {
   font-size: 16px;
-  color: #fff;
+  color: #555;
+  z-index: 1;
+  position: relative;
 }
 
-@media (max-width: 767px) {
-  .counter-wrapper .single-counter .text {
-    font-size: 14px;
+@media (max-width: 768px) {
+  .counters {
+    flex-direction: column;
+    align-items: center;
   }
-}
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
-  .counter-wrapper .single-counter .text {
-    font-size: 16px;
+  .counter {
+    width: 100%;
+    max-width: 280px;
+    margin-bottom: 20px;
   }
 }
 
@@ -2452,6 +2422,20 @@ body {
 }
 
 
+.main-btn-sotibOlish{
+  background-color: goldenrod !important;
+  color: white;
+  font-size: 18px;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  margin: 30px 0;
+}
+
 
 .main-btn:hover {
   background-color: goldenrod;
@@ -2504,13 +2488,37 @@ body{
 
 
 
+/* Styling for phone number input and other form elements */
+.phone-number input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
 
+.order-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
+.time-of-day select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
 
+/* Styling for the button */
+.main-btn-sotibOlish {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
 
-
-
-
-
-
-
+.main-btn-sotibOlish:hover {
+  background-color: #0056b3;
+}

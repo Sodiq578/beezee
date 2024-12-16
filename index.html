@@ -20,6 +20,19 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
+    <!-- jQuery kutubxonasi -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- intl-tel-input kutubxonasi CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+
+<!-- intl-tel-input kutubxonasi JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+<!-- utils.js telefon raqamining validatsiyasi uchun -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js"></script>
+
+
   </head>
 
   <body>
@@ -72,22 +85,20 @@
                 >
                   <ul id="nav" class="navbar-nav ms-auto">
                     <li class="nav-item">
-                      <a class="page-scroll active" href="#home">Home</a>
+                      <a class="page-scroll active" href="#home">Asosiy</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                      <a class="page-scroll" href="#about">Maxsulot xaqida</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="#features">Features</a>
+                      <a class="page-scroll" href="#brand-area">Sertifikarlar</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="#about">About</a>
+                      <a href="#about-shape-1">Qo'shimcha</a>
                     </li>
                     <li class="nav-item">
-                      <a class="page-scroll" href="#facts">Why</a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="javascript:void(0)">Team</a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="#footer">Buyurma berish</a>
+                      <a href="#footer">Buyurtma berish</a>
                     </li>
 
                     <li class="nav-item">
@@ -171,7 +182,7 @@
     <!--====== HEADER PART ENDS ======-->
 
     <!--====== BRAND PART START ======-->
-    <div class="brand-area pt-90">
+    <div id="brand-area" class="brand-area pt-90">
       <div class="container">
         <h3 class="title">Xalqaro sertifikatlarimiz</h3>
         <div class="row">
@@ -243,7 +254,7 @@
               hujjat. Ushbu sertifikat mahsulot yoki xizmatning Islom dinining
               halol tamoyillariga mos ekanligini tekshirish jarayonining nomi.
             </p>
-            <button class="main-btn">Learn More</button>
+            <button class="main-btn" onclick="scrollToSection()">Sotib olish</button>
           </div>
         </div>
       </div>
@@ -415,7 +426,8 @@
             </div>
       
             <!-- Potensiya Cards Section -->
-            <div class="col-lg-6">
+
+            <div id="#about-shape-1" class="col-lg-6">
               <div class="potensiya-cards">
                 <div class="potensiya-card">
                   <i class="fas fa-bolt"></i>
@@ -512,95 +524,22 @@
     <!--====== VIDEO COUNTER PART START ======-->
     <section id="facts" class="video-counter pt-70">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 order-lg-last">
-            <div
-              class="counter-wrapper mt-50 wow fadeIn"
-              data-wow-duration="1s"
-              data-wow-delay="0.8s"
-            >
-              <div class="counter-content">
-                <div class="section-title">
-                  <div class="line"></div>
-                  <h3 class="title">Cool facts <span> about this app</span></h3>
-                </div>
-                <!-- section title -->
-                <p class="text">
-                  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, seiam
-                  nonumy eirmod tempor invidunt ut labore et dolore magna
-                  aliquyam erat, sed diam voluptua.
-                </p>
-              </div>
-              <!-- counter content -->
-              <div class="row no-gutters">
-                <div class="col-4">
-                  <div
-                    class="single-counter counter-color-1 d-flex align-items-center justify-content-center"
-                  >
-                    <div class="counter-items text-center">
-                      <span
-                        class="count countup text-uppercase"
-                        cup-end="125"
-                      ></span>
-
-                      <p class="text">Downloads</p>
-                    </div>
-                  </div>
-                  <!-- single counter -->
-                </div>
-                <div class="col-4">
-                  <div
-                    class="single-counter counter-color-2 d-flex align-items-center justify-content-center"
-                  >
-                    <div class="counter-items text-center">
-                      <span
-                        class="count countup text-uppercase"
-                        cup-end="87"
-                      ></span>
-                      <p class="text">Active Users</p>
-                    </div>
-                  </div>
-                  <!-- single counter -->
-                </div>
-                <div class="col-4">
-                  <div
-                    class="single-counter counter-color-3 d-flex align-items-center justify-content-center"
-                  >
-                    <div class="counter-items text-center">
-                      <span
-                        class="count countup text-uppercase"
-                        cup-end="59"
-                      ></span>
-                      <p class="text">User Rating</p>
-                    </div>
-                  </div>
-                  <!-- single counter -->
-                </div>
-              </div>
-              <!-- row -->
+        <div class="counter-section">
+          <h3 class="section-title">BEE ZEE Statistikasi</h3>
+          <div class="counters">
+            <div class="counter">
+              <div class="counter-value" data-number="700000">0</div>
+              <p class="counter-label">Xarid qilgan mijozlar</p>
             </div>
-            <!-- counter wrapper -->
-          </div>
-          <div class="col-lg-6">
-            <div class="video-content mt-50 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
-              <img class="dots" src="assets/images/video/dots.svg" alt="dots" />
-              <div class="video-wrapper">
-                <div class="video-image">
-                  <img src="assets/newImg/beezeerasim3.jpg" alt="video" />
-                </div>
-                <div class="video-icon">
-                  <!-- GLightbox uchun video link -->
-                  <a
-                    href="https://www.youtube.com/shorts/xvEpsOQh9AQ"
-                    class="video-popup glightbox"
-                  >
-                  <a href="https://www.youtube.com/shorts/xvEpsOQh9AQ"><i class="lni lni-play"></i></a>
-                  </a>
-                </div>
-              </div>
+            <div class="counter">
+              <div class="counter-value" data-number="8000">0</div>
+              <p class="counter-label">Faol foydalanuvchilar</p>
+            </div>
+            <div class="counter">
+              <div class="counter-value" data-number="1000000">0</div>
+              <p class="counter-label">Foydalanuvchi reytingi</p>
             </div>
           </div>
-          
         </div>
         <!-- row -->
       </div>
@@ -616,24 +555,43 @@
           data-wow-duration="1s"
           data-wow-delay="0.5s"
         >
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="order-info mt-45">
-                <h2 class="order-title">Buyurtma ma’lumotlari</h2>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="order-form mt-50">
-                <form action="#">
-                  <input type="text" placeholder="Ismingiz" />
-                  <input type="text" placeholder="+998" />
-                  <input type="text" placeholder="Manzilingiz" />
-                  <input type="text" placeholder="Izoh" />
-                  <button class="main-btn">Buyurtma Berish</button>
-                </form>
-              </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="order-info mt-45">
+              <h2 class="order-title">Buyurtma ma’lumotlari</h2>
             </div>
           </div>
+          <div class="col-lg-6">
+            <div class="order-form mt-50">
+              <form>
+                <!-- Ism -->
+                <input type="text" placeholder="Ismingiz" />
+        
+                <!-- Telefon raqami va davlatni tanlash -->
+                <div class="phone-number">
+                  <input type="tel" id="mobile_code" class="form-control" placeholder="Telefon raqamingiz" />
+                </div>
+        
+                <!-- Manzil va Izoh -->
+                <input type="text" placeholder="Manzilingiz" />
+                <input type="text" placeholder="Izoh" />
+        
+                <!-- Kunning qaysi qismida bog'lanish -->
+                <div class="time-of-day">
+                  <label for="time">Kunning qaysi qismida bog'lanish:</label>
+                  <select name="time" id="time">
+                    <option value="morning" selected>Kunning birinchi yarmida</option>
+                    <option value="afternoon">Kunning ikkinchi yarmida</option>
+                  </select>
+                </div>
+        
+                <!-- Buyurtma -->
+                <button class="main-btn-sotibOlish">Buyurtma Berish</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        
 
           <!-- row -->
         </div>
