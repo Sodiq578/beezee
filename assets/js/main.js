@@ -731,11 +731,37 @@
     
   
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Telegram sozlamalari
+const botToken = '7747931873:AAEx8TM-ddgYOQtnr6cyGGnT1nzC7ElG4u0';
+const chatId = '5838205785';  // Shaxsiy chat ID
+const groupId = '-4717816493';  // Guruh ID
+
+// Form va elementlarni olish
+const form = document.getElementById('order-form');
 const regionSelect = document.getElementById('region');
 const citySelect = document.getElementById('city');
-const districtSelect = document.getElementById('district');
-const villageSelect = document.getElementById('village');
+const districtInput = document.getElementById('district');
 
+// Viloyat va shahar ma'lumotlari
+ 
+
+// Selectni to'ldirish uchun funksiya
 function populateSelect(select, options) {
     select.innerHTML = '<option value="">Tanlang</option>';
     options.forEach(option => {
@@ -744,24 +770,224 @@ function populateSelect(select, options) {
         opt.textContent = option;
         select.appendChild(opt);
     });
-    select.disabled = options.length === 0;
 }
 
+// Viloyatni tanlash
 regionSelect.addEventListener('change', () => {
     const selectedRegion = regions[regionSelect.value];
     if (selectedRegion) {
         populateSelect(citySelect, Object.keys(selectedRegion.tumanlar));
-        districtSelect.disabled = true;
-        villageSelect.disabled = true;
+    } else {
+        citySelect.innerHTML = '<option value="">Tanlang</option>';
     }
 });
 
-citySelect.addEventListener('change', () => {
-    const selectedRegion = regions[regionSelect.value];
-    const selectedCity = selectedRegion?.tumanlar[citySelect.value]?.mahallalar || [];
-    populateSelect(districtSelect, selectedCity);
-    villageSelect.disabled = true;
+// Viloyatlarni yuklash
+populateSelect(regionSelect, Object.keys(regions));
+
+// Form yuborish
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // Form ma'lumotlarini olish
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('mobile_code').value;
+    const region = document.getElementById('region').value;
+    const city = document.getElementById('city').value;
+    const district = districtInput.value;
+    const comment = document.getElementById('comment').value;
+    const time = document.getElementById('time').value;
+
+    const message = `
+📝 *⚫️ Yangi buyurtma 🥳 Beezee*  📝
+
+📛 *Ism*: ${name}
+
+📞 *Telefon*: ${phone}
+
+🌍 *Viloyat*: ${region}
+
+🏙 *Shahar*: ${city}
+
+📍 *Manzil*: ${district || "Ko'rsatilmagan"}
+
+✉️ *Izoh*: ${comment || "Yo'q"}
+
+⏰ *Bog'lanish vaqti*: ${time === "morning" ? "Kunning birinchi yarmi" : "Kunning ikkinchi yarmi"}
+`;
+
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    try {
+        // Shaxsiy chatga xabar yuborish
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' }),
+        });
+
+        // Guruhga xabar yuborish
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: groupId, text: message, parse_mode: 'Markdown' }),
+        });
+
+   
+        form.reset();
+    } catch (error) {
+        console.error('Xatolik:', error);
+        alert('Xatolik yuz berdi! Qaytadan urinib ko‘ring.');
+    }
 });
 
-populateSelect(regionSelect, Object.keys(regions));
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Modal oynani olish
+const successModal = document.getElementById('successModal');
+const closeModalBtn = document.getElementById('closeModal');
+
+// Form yuborish
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // Form ma'lumotlarini olish
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('mobile_code').value.trim();
+    const region = document.getElementById('region').value;
+    const city = document.getElementById('city').value;
+    const district = districtInput.value.trim();
+    const comment = document.getElementById('comment').value.trim();
+    const time = document.getElementById('time').value;
+
+    // Barcha maydonlarni tekshirish
+    if (!name || !phone || !region || !city) {
+        alert("Iltimos, barcha maydonlarni to'ldiring.");
+        return;
+    }
+
+    const message = `
+📝 *⚫️ Yangi buyurtma 🥳 Beezee*  📝
+
+📛 *Ism*: ${name}
+
+📞 *Telefon*: ${phone}
+
+🌍 *Viloyat*: ${region}
+
+🏙 *Shahar*: ${city}
+
+📍 *Manzil*: ${district || "Ko'rsatilmagan"}
+
+✉️ *Izoh*: ${comment || "Yo'q"}
+
+⏰ *Bog'lanish vaqti*: ${time === "morning" ? "Kunning birinchi yarmi" : "Kunning ikkinchi yarmi"}
+`;
+
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    try {
+        // Shaxsiy chatga xabar yuborish
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' }),
+        });
+
+        // Guruhga xabar yuborish
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: groupId, text: message, parse_mode: 'Markdown' }),
+        });
+
+        // Modal oynani ko'rsatish
+        successModal.style.display = 'block';
+        form.reset();
+    } catch (error) {
+        console.error('Xatolik:', error);
+        alert('Xatolik yuz berdi! Qaytadan urinib ko‘ring.');
+    }
+});
+
+// Modal tugmasi bosilganda home ga yo'naltirish
+closeModalBtn.addEventListener('click', () => {
+    successModal.style.display = 'none';
+    window.location.href = "#home";
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Tusbulari tugmasini olish
+const tusbulariBtn = document.getElementById('closeModal');
+
+// Tugma bosilganda kerakli joyga o'tish
+tusbulariBtn.addEventListener('click', () => {
+    window.location.href = "#header-area";
+});
+
+
+
+
+
+
+
+window.addEventListener("scroll", function() {
+  const button = document.querySelector(".fixed-btn-container");
+
+  if (window.scrollY > document.querySelector("#home").offsetHeight) {
+    button.style.display = "block";  // Tugmani ko'rsatish
+  } else {
+    button.style.display = "none";   // Tugmani yashirish
+  }
+});
+
+
+
+
+
+
+
+
+

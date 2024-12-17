@@ -2528,8 +2528,7 @@ body{
 .order-form input {
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+ 
 }
 
 .time-of-day select {
@@ -2698,7 +2697,7 @@ body {
   background: #ffffff;
   padding: 25px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
 }
 form input, form select {
   width: 100%;
@@ -2742,3 +2741,260 @@ form input, form select {
   font-weight: bold;
 }
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Umumiy stil */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+h2 {
+  color: #444;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Tugmalar */
+.main-btn-sotibOlish {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.main-btn-sotibOlish:hover {
+  background-color: #0056b3;
+}
+
+/* Modal oynasi */
+.modal {
+  display: none; /* Avvaldan ko'rinmasin */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  margin-top: 200px !important;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 50px 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.modal-content p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.modal-content .main-btn-sotibOlish {
+  width: 100%;
+  font-size: 16px;
+}
+
+ 
+ 
+/* Form uchun konteyner */
+ 
+@media (max-width: 768px) {
+  
+
+  .modal-content {
+      width: 95%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+.footer-title h4 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.footer-contact .contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-contact .contact li {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.footer-contact .contact li i {
+  color: #ff6600; /* Ikonka rangi */
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.footer-contact .contact li a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.footer-contact .contact li a:hover {
+  color: #ff6600;
+}
+
+.footer-contact .contact li:hover {
+  transform: translateX(5px); /* Yengil o'ng tomonga siljish */
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fixed-btn {
+  position: fixed; /* Button stays in one place */
+  bottom: 20px; /* 20px from the bottom of the screen */
+  transform: translateX(-50%); /* Exact center positioning */
+  
+  width: 80%;
+  font-weight: bold; /* Bold text */
+  border: none; /* No border */
+  text-decoration: none; /* No underline */
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Shadow effect */
+  z-index: 1000; /* On top of other elements */
+  background-color: goldenrod !important; /* Golden color background */
+  color: white;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin: 30px 0;
+  box-shadow: 0px 5px 15px rgba(255, 157, 0, 0.796);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  
+  /* Pulsating animation */
+  animation: pulse 1.5s infinite; /* Apply the pulse animation */
+}
+
+/* Define the pulse animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Normal size */
+  }
+  50% {
+    transform: scale(1.1); /* Slightly enlarge */
+  }
+  100% {
+    transform: scale(1); /* Return to normal size */
+  }
+}
+
+/* Hover effect to change the background color */
+.fixed-btn:hover {
+  background-color: darkorange; /* Change background color on hover */
+}
