@@ -466,7 +466,7 @@ p {
 .sticky {
   position: fixed;
   z-index: 99;
-  background-color: goldenrod;
+  background-color: rgb(255, 191, 0);
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   -webkit-box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
@@ -1034,18 +1034,48 @@ body {
 }
 
 .potensiya-card {
-  background: #f4e1a1; /* Goldenrod rang */
+ 
   padding: 30px;
   border-radius: 12px;
   text-align: center;
   width: 100%;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
+  box-shadow: 0 4px 12px rgba(228, 146, 3, 0.2);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  position: relative;
 }
 
-.potensiya-card:hover {
-  transform: translateY(-10px);
+.potensiya-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/soft-clouds.png'); /* Yengil matnli fon tasviri */
+  opacity: 0.15; /* Transparensiya qo'shish */
+  z-index: -1;
+  animation: wave-animation 5s ease-in-out infinite; /* To'lqinli animatsiya */
 }
+
+/* To'lqin animatsiyasi */
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0); /* Boshlang'ich holat */
+  }
+  50% {
+    transform: translateX(-10%); /* To'lqin harakati */
+  }
+  100% {
+    transform: translateX(0); /* Tugallanadigan holat */
+  }
+}
+
+/* Hover holati */
+.potensiya-card:hover {
+  transform: translateY(-10px); /* Hoverdagi ko'tarilish */
+  box-shadow: 0 8px 20px rgba(255, 149, 0, 0.3);
+}
+
 
 .potensiya-card i {
   font-size: 50px;
@@ -2522,3 +2552,193 @@ body{
 .main-btn-sotibOlish:hover {
   background-color: #0056b3;
 }
+
+
+
+
+
+
+
+
+
+
+/* Umumiy stillar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+#facts {
+  position: relative;
+  background: linear-gradient(135deg, #ffcc00, #ff6f00); /* Yoki o'zingiz xohlagan gradient */
+  color: #fff;
+  text-align: center;
+  padding: 70px 0;
+  font-family: Arial, sans-serif;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#facts::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: url('https://www.transparenttextures.com/patterns/diag-stripes.png'); /* To'lqin shaklini yaratish uchun tasvir */
+  animation: wave-animation 4s ease-in-out infinite;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+}
+
+.counters {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.counter {
+  background: rgba(255, 255, 255, 0.1); /* Shaffof kartalar */
+  backdrop-filter: blur(10px); /* Blur efekti */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 30px 20px;
+  width: 200px;
+  height: 200px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #fff;
+  position: relative;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); /* Hexagonal shape */
+}
+
+.counter:hover {
+  transform: translateY(-10px); /* Hoverdagi ko'tarilish */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.counter-value {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.counter-label {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* To'lqin animatsiyasi */
+@keyframes wave-animation {
+  0% {
+    transform: translateX(0); /* Boshlang'ich holat */
+  }
+  50% {
+    transform: translateX(-50%); /* To'lqin harakati */
+  }
+  100% {
+    transform: translateX(0); /* Tugallanadigan holat */
+  }
+}
+
+/* Media query - kichik ekranlar uchun */
+@media (max-width: 768px) {
+  .counters {
+    flex-direction: column;
+    align-items: center;
+  }
+  .counter {
+    width: 90%;
+    height: 180px; /* Slightly adjusted for mobile responsiveness */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.order-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.order-form {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+form input, form select {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.phone-input-wrapper {
+  position: relative;
+}
+.country-code-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+.main-btn-sotibOlish {
+  display: inline-block;
+  background: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.main-btn-sotibOlish:hover {
+  background: #0056b3;
+}
+.address-container select:disabled {
+  background: #f0f0f0;
+  cursor: not-allowed;
+}
+.time-of-day label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+ 

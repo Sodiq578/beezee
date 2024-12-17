@@ -403,6 +403,26 @@
 
 
 
+  function scrollToSection() {
+    const footer = document.getElementById("footer");
+    footer.scrollIntoView({ behavior: "smooth" });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
 
 
 
@@ -424,3 +444,324 @@
     // Additional JavaScript to handle the phone input styling and behavior can be added here
   });
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const counters = document.querySelectorAll('.counter-value');
+
+  // Har safar bo'lim ko'ringanda ishlaydi
+  let observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounters();
+      }
+    });
+  });
+
+  observer.observe(document.querySelector('#facts'));
+
+  // Animatsiya funksiyasi
+  function animateCounters() {
+    counters.forEach(counter => {
+      counter.innerText = '0'; // Har safar qayta boshlash uchun
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-number');
+        const current = +counter.innerText;
+        const increment = target / 400; // 10 soniya davomida tugashi uchun
+
+        if (current < target) {
+          counter.innerText = Math.ceil(current + increment);
+          setTimeout(updateCount, 20);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  const regions = {
+    "Andijon viloyati": {
+      "tumanlar": {
+        "Andijon tumani": {"Tuman markazi": "Kuyganyor"},
+        "Asaka tumani": {"Tuman markazi": "Asaka (shahar)"},
+        "Baliqchi tumani": {"Tuman markazi": "Baliqchi (shahar)"},
+        "Boʻston tumani": {"Tuman markazi": "Boʻston (shaharcha)"},
+        "Buloqboshi tumani": {"Tuman markazi": "Buloqboshi"},
+        "Izboskan tumani": {"Tuman markazi": "Poytugʻ"},
+        "Jalaquduq tumani": {"Tuman markazi": "Jalaquduq"},
+        "Xoʻjaobod tumani": {"Tuman markazi": "Xoʻjaobod"},
+        "Qoʻrgʻontepa tumani": {"Tuman markazi": "Qoʻrgʻontepa"},
+        "Marhamat tumani": {"Tuman markazi": "Marhamat"},
+        "Oltinkoʻl tumani": {"Tuman markazi": "Oltinkoʻl (qishloq)"},
+        "Paxtaobod tumani": {"Tuman markazi": "Paxtaobod"},
+        "Shahrixon tumani": {"Tuman markazi": "Shahrixon (shahar)"},
+        "Ulugʻnor tumani": {"Tuman markazi": "Oqoltin"}
+      }
+    },
+
+    
+  
+    "Qoraqalpogʻiston": {
+      "tumanlar": {
+        "Amudaryo tumani": {"Tuman markazi": "Mangʻit (shahar)"},
+        "Beruniy tumani": {"Tuman markazi": "Beruniy (shahar)"},
+        "Chimboy tumani": {"Tuman markazi": "Chimboy"},
+        "Ellikqalʼa tumani": {"Tuman markazi": "Boʻston (shahar)"},
+        "Kegeyli tumani": {"Tuman markazi": "Kegeyli"},
+        "Moʻynoq tumani": {"Tuman markazi": "Moʻynoq"},
+        "Nukus tumani": {"Tuman markazi": "Oqmangʻit"},
+        "Qanlikoʻl tumani": {"Tuman markazi": "Qanlikoʻl"},
+        "Qoʻngʻirot tumani": {"Tuman markazi": "Qoʻngʻirot"},
+        "Qoraoʻzak tumani": {"Tuman markazi": "Qoraoʻzak"},
+        "Shumanay tumani": {"Tuman markazi": "Shumanay"},
+        "Taxtakoʻpir tumani": {"Tuman markazi": "Taxtakoʻpir"},
+        "Toʻrtkoʻl tumani": {"Tuman markazi": "Toʻrtkoʻl"},
+        "Xoʻjayli tumani": {"Tuman markazi": "Xoʻjayli"},
+        "Taxiatosh tumani": {"Tuman markazi": "Taxiatosh"},
+        "Boʻzatov tumani": {"Tuman markazi": "Boʻzatov"}
+      }
+    },
+    "Navoiy viloyati": {
+      "tumanlar": {
+        "Konimex tumani": {"Tuman markazi": "Konimex (shaharcha)"},
+        "Karmana tumani": {"Tuman markazi": "Karmana"},
+        "Qiziltepa tumani": {"Tuman markazi": "Qiziltepa"},
+        "Xatirchi tumani": {"Tuman markazi": "Yangirabot"},
+        "Navbahor tumani": {"Tuman markazi": "Beshrabot"},
+        "Nurota tumani": {"Tuman markazi": "Nurota"},
+        "Tomdi tumani": {"Tuman markazi": "Tomdibuloq"},
+        "Uchquduq tumani": {"Tuman markazi": "Uchquduq"}
+      }
+    },
+    "Buxoro viloyati": {
+      "tumanlar": {
+        "Olot tumani": {"Tuman markazi": "Olot"},
+        "Buxoro tumani": {"Tuman markazi": "Galaosiyo"},
+        "Gʻijduvon tumani": {"Tuman markazi": "Gʻijduvon"},
+        "Jondor tumani": {"Tuman markazi": "Jondor (shaharcha)"},
+        "Kogon tumani": {"Tuman markazi": "Kogon"},
+        "Qorakoʻl tumani": {"Tuman markazi": "Qorakoʻl (shahar)"},
+        "Qorovulbozor tumani": {"Tuman markazi": "Qorovulbozor"},
+        "Peshku tumani": {"Tuman markazi": "Yangibozor"},
+        "Romitan tumani": {"Tuman markazi": "Romitan"},
+        "Shofirkon tumani": {"Tuman markazi": "Shofirkon"},
+        "Vobkent tumani": {"Tuman markazi": "Vobkent"}
+      }
+    },
+
+    
+    
+      "Farg'ona viloyati": {
+        "tumanlar": {
+          "Farg'ona tumani": {"Tuman markazi": "Farg'ona"},
+          "Quva tumani": {"Tuman markazi": "Quva"},
+          "Dang'ara tumani": {"Tuman markazi": "Dang'ara"},
+          "Beshariq tumani": {"Tuman markazi": "Beshariq"},
+          "Oltiariq tumani": {"Tuman markazi": "Oltiariq"},
+          "Yazyavan tumani": {"Tuman markazi": "Yazyavan"},
+          "Toshloq tumani": {"Tuman markazi": "Toshloq"},
+          "Bog'dod tumani": {"Tuman markazi": "Bog'dod"},
+          "Rishton tumani": {"Tuman markazi": "Rishton"},
+          "Furqat tumani": {"Tuman markazi": "Furqat"},
+          "O'zbekiston tumani": {"Tuman markazi": "O'zbekiston"}
+        }
+      },
+      "Jizzax viloyati": {
+        "tumanlar": {
+          "Jizzax tumani": {"Tuman markazi": "Jizzax"},
+          "Zafarobod tumani": {"Tuman markazi": "Zafarobod"},
+          "Forish tumani": {"Tuman markazi": "Forish"},
+          "Baxmal tumani": {"Tuman markazi": "Baxmal"},
+          "G'allaorol tumani": {"Tuman markazi": "G'allaorol"},
+          "Arnasoy tumani": {"Tuman markazi": "Arnasoy"},
+          "Yangiobod tumani": {"Tuman markazi": "Yangiobod"},
+          "Shahrisabz tumani": {"Tuman markazi": "Shahrisabz"}
+        }
+      },
+      "Xorazm viloyati": {
+        "tumanlar": {
+          "Urganch tumani": {"Tuman markazi": "Urganch"},
+          "Gurlan tumani": {"Tuman markazi": "Gurlan"},
+          "Xiva tumani": {"Tuman markazi": "Xiva"},
+          "Beruniy tumani": {"Tuman markazi": "Beruniy"},
+          "Shovot tumani": {"Tuman markazi": "Shovot"},
+          "Khiva tumani": {"Tuman markazi": "Khiva"},
+          "Kungrad tumani": {"Tuman markazi": "Kungrad"},
+          "Urganch shahar": {"Tuman markazi": "Urganch"}
+        }
+      }, 
+
+      
+
+
+
+
+      
+        "Namangan viloyati": {
+          "tumanlar": {
+            "Namangan tumani": {"Tuman markazi": "Namangan"},
+            "Chortoq tumani": {"Tuman markazi": "Chortoq"},
+            "Kosonsoy tumani": {"Tuman markazi": "Kosonsoy"},
+            "Mingbuloq tumani": {"Tuman markazi": "Mingbuloq"},
+            "Tuproqqala tumani": {"Tuman markazi": "Tuproqqala"},
+            "Uchqo'rg'on tumani": {"Tuman markazi": "Uchqo'rg'on"},
+            "Yangiyo'l tumani": {"Tuman markazi": "Yangiyo'l"},
+            "Kaspiy tumani": {"Tuman markazi": "Kaspiy"},
+            "Chust tumani": {"Tuman markazi": "Chust"},
+            "Peshku tumani": {"Tuman markazi": "Peshku"}
+          }
+        },
+        "Surxondaryo viloyati": {
+          "tumanlar": {
+            
+            "Termiz tumani": {"Tuman markazi": "Termiz"},
+            "Oltinosy tumani": {"Tuman markazi": "Bo'ston"},
+
+            "Angor tumani": {"Tuman markazi": "Angor"},
+            "Sherobod tumani": {"Tuman markazi": "Sherobod"},
+            "Boysun tumani": {"Tuman markazi": "Boysun"},
+            "Jarkurgan tumani": {"Tuman markazi": "Jarkurgan"},
+            "Uzun tumani": {"Tuman markazi": "Uzun"},
+            "Sariosiyo tumani": {"Tuman markazi": "Sariosiyo"},
+            "Qumqo'rg'on tumani": {"Tuman markazi": "Qumqo'rg'on"},
+            "Muzrabot tumani": {"Tuman markazi": "Muzrabot"},
+             
+          }
+        },
+        "Samarqand viloyati": {
+          "tumanlar": {
+            "Samarqand tumani": {"Tuman markazi": "Samarqand"},
+            "Paxtachi tumani": {"Tuman markazi": "Paxtachi"},
+            "Ishtixon tumani": {"Tuman markazi": "Ishtixon"},
+            "Jomboy tumani": {"Tuman markazi": "Jomboy"},
+            "Narpay tumani": {"Tuman markazi": "Narpay"},
+            "Kattaqo'rg'on tumani": {"Tuman markazi": "Kattaqo'rg'on"},
+            "Oqdaryo tumani": {"Tuman markazi": "Oqdaryo"},
+            "Pastdarg'om tumani": {"Tuman markazi": "Pastdarg'om"},
+            "Urgut tumani": {"Tuman markazi": "Urgut"},
+            "Samarkand shahar": {"Tuman markazi": "Samarqand"}
+          }
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+          "Sirdaryo viloyati": {
+            "tumanlar": {
+              "Guliston tumani": {"Tuman markazi": "Guliston"},
+              "Sirdaryo tumani": {"Tuman markazi": "Sirdaryo"},
+              "Mirzaobod tumani": {"Tuman markazi": "Mirzaobod"},
+              "Boyovut tumani": {"Tuman markazi": "Boyovut"},
+              "Shirin tumani": {"Tuman markazi": "Shirin"},
+              "Oqoltin tumani": {"Tuman markazi": "Oqoltin"},
+              "Xovos tumani": {"Tuman markazi": "Xovos"},
+              "Yangiyer tumani": {"Tuman markazi": "Yangiyer"},
+              "Arnasoy tumani": {"Tuman markazi": "Arnasoy"}
+            }
+          },
+          "Toshkent shahr": {
+            "tumanlar": {
+              "Chilonzor tumani": {"Tuman markazi": "Chilonzor"},
+              "Mirzo-Ulug'bek tumani": {"Tuman markazi": "Mirzo-Ulug'bek"},
+              "Mirobod tumani": {"Tuman markazi": "Mirobod"},
+              "Yunusobod tumani": {"Tuman markazi": "Yunusobod"},
+              "Sergeli tumani": {"Tuman markazi": "Sergeli"},
+              "Shayxontohur tumani": {"Tuman markazi": "Shayxontohur"},
+              "Almazar tumani": {"Tuman markazi": "Almazar"},
+              "Samarqand tumani": {"Tuman markazi": "Samarqand"},
+              "Bektemir tumani": {"Tuman markazi": "Bektemir"},
+              "Yakkasaroy tumani": {"Tuman markazi": "Yakkasaroy"}
+            }
+          }
+        }
+        
+      
+      
+    
+    
+    
+    
+  
+
+const regionSelect = document.getElementById('region');
+const citySelect = document.getElementById('city');
+const districtSelect = document.getElementById('district');
+const villageSelect = document.getElementById('village');
+
+function populateSelect(select, options) {
+    select.innerHTML = '<option value="">Tanlang</option>';
+    options.forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option;
+        opt.textContent = option;
+        select.appendChild(opt);
+    });
+    select.disabled = options.length === 0;
+}
+
+regionSelect.addEventListener('change', () => {
+    const selectedRegion = regions[regionSelect.value];
+    if (selectedRegion) {
+        populateSelect(citySelect, Object.keys(selectedRegion.tumanlar));
+        districtSelect.disabled = true;
+        villageSelect.disabled = true;
+    }
+});
+
+citySelect.addEventListener('change', () => {
+    const selectedRegion = regions[regionSelect.value];
+    const selectedCity = selectedRegion?.tumanlar[citySelect.value]?.mahallalar || [];
+    populateSelect(districtSelect, selectedCity);
+    villageSelect.disabled = true;
+});
+
+populateSelect(regionSelect, Object.keys(regions));
+ 
