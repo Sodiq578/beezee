@@ -6,8 +6,24 @@
     <!--====== Title ======-->
     <title>BEE ZEE</title>
 
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Alsafia shifobaxsh dorilari sotuvchi kompaniya, 100% tabiiy dorilar bilan salomatlikni tiklashga yordam beradi. Beezee shifobaxsh dorilari bilan sog'lig'ingizni yaxshilang!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Alsafia Shifobaxsh Dorilar Sotuvchi Kompaniya">
+    <meta property="og:description" content="Alsafia shifobaxsh dorilari sotuvchi kompaniya, 100% tabiiy dorilari bilan sog'lig'ingizni yaxshilashga yordam beradi. Beezee shifobaxsh dorilari bilan salomatlikni qayta tiklash!">
+    <meta property="og:image" content="assets/newImg/rasim3.jpg">
+    <meta property="og:url" content="https://www.sizningsaytingiz.com">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title" content="Alsafia Shifobaxsh Dorilar Sotuvchi Kompaniya">
+    <meta name="twitter:description" content="Alsafia shifobaxsh dorilari sotuvchi kompaniya, 100% tabiiy dorilari bilan salomatlikni yaxshilashga yordam beradi. Beezee shifobaxsh dorilari bilan sog'lig'ingizni qayta tiklash!">
+    <meta name="twitter:image" content="assets/newImg/rasim3.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Rasm va boshqa fayllar -->
+    <link rel="icon" href="assets/favicon.ico">
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="assets/newImg/logo.svg" type="image/png" />
@@ -178,9 +194,6 @@
                 />
               </div>
               <!-- header hero image -->
-              <div class="fixed-btn-container">
-                <a href="#footer" class="fixed-btn">Sotib olish</a>
-              </div>
             </div>
           </div>
           <!-- row -->
@@ -363,7 +376,13 @@
                   hamda 20 xil tabiiy ekstraktlardan tashkil topgan organik va
                   halol mahsulotdir!
                 </p>
+
+                
+          
               </div>
+                    <div class="fixed-btn-container">
+                  <a href="#footer" class="fixed-btn">Sotib olish</a>
+                </div>
               <!-- about content -->
             </div>
             <div class="col-lg-6">
@@ -407,6 +426,7 @@
                   </h3>
                 </div>
        
+
                 <div class="section-content">
                   <p id="textContent">
                     Asal organizmda minglab dardga shifo ekanligi barcha uchun ma’lum.
@@ -566,63 +586,45 @@
                 </div>
             </div>
             <div class="col-lg-6">
-              <div class="order-form mt-50">
-                  <form id="order-form">
-                      <!-- Ism -->
-                      <label for="name">Ismingiz</label>
-                      <input type="text" id="name" placeholder="Ismingiz" required />
-          
-                      <!-- Telefon -->
-                      <label for="mobile_code">Telefon raqamingiz</label>
-                      <div class="phone-input-wrapper">
-                          <input type="tel" id="mobile_code" placeholder="Telefon raqamingiz" value="+998" pattern="^\+998\d{9}$" required />
-                          <span class="country-code-icon">🇺🇿</span>
-                      </div>
-          
-                      <!-- Viloyat -->
-                      <label for="region">Viloyat</label>
-                      <select id="region" required>
-                          <option value="">Viloyatni tanlang</option>
-                      </select>
-          
-                      <!-- Shahar -->
-                      <label for="city">Shahar</label>
-                      <select id="city" required>
-                          <option value="">Shaharni tanlang</option>
-                      </select>
-          
-                      <!-- Qo'shimcha manzil -->
-                      <label for="district">Manzil haqida qo'shimcha</label>
-                      <input type="text" id="district" placeholder="Manzil haqida qo'shimcha" />
-          
-                      <!-- Izoh -->
-                      <label for="comment">Izoh</label>
-                      <input type="text" id="comment" placeholder="Izoh" />
-          
-                      <!-- Bog'lanish vaqti -->
-                      <label for="time">Bog'lanish vaqti</label>
-                      <select id="time">
-                          <option value="morning" selected>Kunning birinchi yarmida</option>
-                          <option value="afternoon">Kunning ikkinchi yarmida</option>
-                      </select>
-          
-                      <!-- Yuborish tugmasi -->
-                      <button type="submit" class="main-btn-sotibOlish">Buyurtma Berish</button>
-                  </form>
-              </div>
-          </div>
-          
-
-
-
-          <div id="successModal" class="modal" style="display: none;">
-            <div class="modal-content">
-               
-                <p>Sizning buyurtmangiz qabul qilindi ✅ <br> Mutaxassislarimiz tez orada siz bilan bog'lanishadi.</p>
-                <button id="closeModal" class="main-btn-sotibOlish">Tushunarli</button>
+                <div class="order-form mt-50">
+                    <form id="order-form">
+                        <!-- Ism -->
+                        <label for="name">Ismingiz</label>
+                        <input type="text" id="name" placeholder="Ismingiz" required />
+        
+                        <!-- Telefon -->
+                        <label for="mobile_code">Telefon raqamingiz</label>
+                        <div class="phone-input-wrapper">
+                            <input type="tel" id="mobile_code" placeholder="Telefon raqamingiz" value="+998" pattern="^\+998\d{9}$" required />
+                            <span class="country-code-icon">🇺🇿</span>
+                        </div>
+        
+                        <!-- Manzil -->
+                        <label for="district">Manzil haqida qo'shimcha</label>
+                        <input type="text" id="district" placeholder="Manzil haqida qo'shimcha" required />
+        
+                        <!-- Bog'lanish vaqti -->
+                        <label for="time">Bog'lanish vaqti</label>
+                        <select id="time">
+                            <option value="morning" selected>Kunning birinchi yarmida</option>
+                            <option value="afternoon">Kunning ikkinchi yarmida</option>
+                            <option value="anytime">Farqi yo'q</option> <!-- Yangi variant qo'shildi -->
+                        </select>
+        
+                        <!-- Yuborish tugmasi -->
+                        <button type="submit" class="main-btn-sotibOlish">Buyurtma Berish</button>
+                    </form>
+                </div>
             </div>
         </div>
+        
+        <div id="successModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <p>Sizning buyurtmangiz qabul qilindi ✅ <br> Mutaxassislarimiz tez orada siz bilan bog'lanishadi.</p>
+                <a href="#home"><button id="closeModal" class="main-btn-sotibOlish">Tushunarli</button></a>
+            </div>
         </div>
+        
     
         </div>
         
@@ -654,7 +656,7 @@
                     </a>
                   </li>
                   <li>
-                    <a target="_blank" href="https://www.instagram.com/alsafia_uz">
+                    <a target="_blank" href="https://www.instagram.com/drbeezee.uz/">
                       <i class="lni lni-instagram-filled"> </i>
                     </a>
                   </li>

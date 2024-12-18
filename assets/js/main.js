@@ -413,6 +413,27 @@
 
 
 
+// Get the button container and footer elements
+const fixedBtnContainer = document.querySelector('.fixed-btn-container');
+const footer = document.querySelector('#footer');
+
+// Function to check if the button is in the viewport
+function checkButtonVisibility() {
+  const footerPosition = footer.getBoundingClientRect();
+  
+  // If footer is in view, hide the button; otherwise, show it
+  if (footerPosition.top <= window.innerHeight && footerPosition.bottom >= 0) {
+    fixedBtnContainer.classList.add('hide-btn'); // Hide button when footer is in view
+  } else {
+    fixedBtnContainer.classList.remove('hide-btn'); // Show button when not in footer view
+  }
+}
+
+// Listen for scroll events
+window.addEventListener('scroll', checkButtonVisibility);
+
+// Check visibility when page loads (in case the page is loaded at the bottom)
+window.addEventListener('load', checkButtonVisibility);
 
 
 
@@ -516,274 +537,16 @@
 
 
 
-
-  const regions = {
-    "Andijon viloyati": {
-      "tumanlar": {
-        "Andijon tumani": {"Tuman markazi": "Kuyganyor"},
-        "Asaka tumani": {"Tuman markazi": "Asaka (shahar)"},
-        "Baliqchi tumani": {"Tuman markazi": "Baliqchi (shahar)"},
-        "Boʻston tumani": {"Tuman markazi": "Boʻston (shaharcha)"},
-        "Buloqboshi tumani": {"Tuman markazi": "Buloqboshi"},
-        "Izboskan tumani": {"Tuman markazi": "Poytugʻ"},
-        "Jalaquduq tumani": {"Tuman markazi": "Jalaquduq"},
-        "Xoʻjaobod tumani": {"Tuman markazi": "Xoʻjaobod"},
-        "Qoʻrgʻontepa tumani": {"Tuman markazi": "Qoʻrgʻontepa"},
-        "Marhamat tumani": {"Tuman markazi": "Marhamat"},
-        "Oltinkoʻl tumani": {"Tuman markazi": "Oltinkoʻl (qishloq)"},
-        "Paxtaobod tumani": {"Tuman markazi": "Paxtaobod"},
-        "Shahrixon tumani": {"Tuman markazi": "Shahrixon (shahar)"},
-        "Ulugʻnor tumani": {"Tuman markazi": "Oqoltin"}
-      }
-    },
-
-    
-  
-    "Qoraqalpogʻiston": {
-      "tumanlar": {
-        "Amudaryo tumani": {"Tuman markazi": "Mangʻit (shahar)"},
-        "Beruniy tumani": {"Tuman markazi": "Beruniy (shahar)"},
-        "Chimboy tumani": {"Tuman markazi": "Chimboy"},
-        "Ellikqalʼa tumani": {"Tuman markazi": "Boʻston (shahar)"},
-        "Kegeyli tumani": {"Tuman markazi": "Kegeyli"},
-        "Moʻynoq tumani": {"Tuman markazi": "Moʻynoq"},
-        "Nukus tumani": {"Tuman markazi": "Oqmangʻit"},
-        "Qanlikoʻl tumani": {"Tuman markazi": "Qanlikoʻl"},
-        "Qoʻngʻirot tumani": {"Tuman markazi": "Qoʻngʻirot"},
-        "Qoraoʻzak tumani": {"Tuman markazi": "Qoraoʻzak"},
-        "Shumanay tumani": {"Tuman markazi": "Shumanay"},
-        "Taxtakoʻpir tumani": {"Tuman markazi": "Taxtakoʻpir"},
-        "Toʻrtkoʻl tumani": {"Tuman markazi": "Toʻrtkoʻl"},
-        "Xoʻjayli tumani": {"Tuman markazi": "Xoʻjayli"},
-        "Taxiatosh tumani": {"Tuman markazi": "Taxiatosh"},
-        "Boʻzatov tumani": {"Tuman markazi": "Boʻzatov"}
-      }
-    },
-    "Navoiy viloyati": {
-      "tumanlar": {
-        "Konimex tumani": {"Tuman markazi": "Konimex (shaharcha)"},
-        "Karmana tumani": {"Tuman markazi": "Karmana"},
-        "Qiziltepa tumani": {"Tuman markazi": "Qiziltepa"},
-        "Xatirchi tumani": {"Tuman markazi": "Yangirabot"},
-        "Navbahor tumani": {"Tuman markazi": "Beshrabot"},
-        "Nurota tumani": {"Tuman markazi": "Nurota"},
-        "Tomdi tumani": {"Tuman markazi": "Tomdibuloq"},
-        "Uchquduq tumani": {"Tuman markazi": "Uchquduq"}
-      }
-    },
-    "Buxoro viloyati": {
-      "tumanlar": {
-        "Olot tumani": {"Tuman markazi": "Olot"},
-        "Buxoro tumani": {"Tuman markazi": "Galaosiyo"},
-        "Gʻijduvon tumani": {"Tuman markazi": "Gʻijduvon"},
-        "Jondor tumani": {"Tuman markazi": "Jondor (shaharcha)"},
-        "Kogon tumani": {"Tuman markazi": "Kogon"},
-        "Qorakoʻl tumani": {"Tuman markazi": "Qorakoʻl (shahar)"},
-        "Qorovulbozor tumani": {"Tuman markazi": "Qorovulbozor"},
-        "Peshku tumani": {"Tuman markazi": "Yangibozor"},
-        "Romitan tumani": {"Tuman markazi": "Romitan"},
-        "Shofirkon tumani": {"Tuman markazi": "Shofirkon"},
-        "Vobkent tumani": {"Tuman markazi": "Vobkent"}
-      }
-    },
-
-    
-    
-      "Farg'ona viloyati": {
-        "tumanlar": {
-          "Farg'ona tumani": {"Tuman markazi": "Farg'ona"},
-          "Quva tumani": {"Tuman markazi": "Quva"},
-          "Dang'ara tumani": {"Tuman markazi": "Dang'ara"},
-          "Beshariq tumani": {"Tuman markazi": "Beshariq"},
-          "Oltiariq tumani": {"Tuman markazi": "Oltiariq"},
-          "Yazyavan tumani": {"Tuman markazi": "Yazyavan"},
-          "Toshloq tumani": {"Tuman markazi": "Toshloq"},
-          "Bog'dod tumani": {"Tuman markazi": "Bog'dod"},
-          "Rishton tumani": {"Tuman markazi": "Rishton"},
-          "Furqat tumani": {"Tuman markazi": "Furqat"},
-          "O'zbekiston tumani": {"Tuman markazi": "O'zbekiston"}
-        }
-      },
-      "Jizzax viloyati": {
-        "tumanlar": {
-          "Jizzax tumani": {"Tuman markazi": "Jizzax"},
-          "Zafarobod tumani": {"Tuman markazi": "Zafarobod"},
-          "Forish tumani": {"Tuman markazi": "Forish"},
-          "Baxmal tumani": {"Tuman markazi": "Baxmal"},
-          "G'allaorol tumani": {"Tuman markazi": "G'allaorol"},
-          "Arnasoy tumani": {"Tuman markazi": "Arnasoy"},
-          "Yangiobod tumani": {"Tuman markazi": "Yangiobod"},
-          "Shahrisabz tumani": {"Tuman markazi": "Shahrisabz"}
-        }
-      },
-      "Xorazm viloyati": {
-        "tumanlar": {
-          "Urganch tumani": {"Tuman markazi": "Urganch"},
-          "Gurlan tumani": {"Tuman markazi": "Gurlan"},
-          "Xiva tumani": {"Tuman markazi": "Xiva"},
-          "Beruniy tumani": {"Tuman markazi": "Beruniy"},
-          "Shovot tumani": {"Tuman markazi": "Shovot"},
-          "Khiva tumani": {"Tuman markazi": "Khiva"},
-          "Kungrad tumani": {"Tuman markazi": "Kungrad"},
-          "Urganch shahar": {"Tuman markazi": "Urganch"}
-        }
-      }, 
-
-      
-
-
-
-
-      
-        "Namangan viloyati": {
-          "tumanlar": {
-            "Namangan tumani": {"Tuman markazi": "Namangan"},
-            "Chortoq tumani": {"Tuman markazi": "Chortoq"},
-            "Kosonsoy tumani": {"Tuman markazi": "Kosonsoy"},
-            "Mingbuloq tumani": {"Tuman markazi": "Mingbuloq"},
-            "Tuproqqala tumani": {"Tuman markazi": "Tuproqqala"},
-            "Uchqo'rg'on tumani": {"Tuman markazi": "Uchqo'rg'on"},
-            "Yangiyo'l tumani": {"Tuman markazi": "Yangiyo'l"},
-            "Kaspiy tumani": {"Tuman markazi": "Kaspiy"},
-            "Chust tumani": {"Tuman markazi": "Chust"},
-            "Peshku tumani": {"Tuman markazi": "Peshku"}
-          }
-        },
-        "Surxondaryo viloyati": {
-          "tumanlar": {
-            
-            "Termiz tumani": {"Tuman markazi": "Termiz"},
-            "Oltinosy tumani": {"Tuman markazi": "Bo'ston"},
-
-            "Angor tumani": {"Tuman markazi": "Angor"},
-            "Sherobod tumani": {"Tuman markazi": "Sherobod"},
-            "Boysun tumani": {"Tuman markazi": "Boysun"},
-            "Jarkurgan tumani": {"Tuman markazi": "Jarkurgan"},
-            "Uzun tumani": {"Tuman markazi": "Uzun"},
-            "Sariosiyo tumani": {"Tuman markazi": "Sariosiyo"},
-            "Qumqo'rg'on tumani": {"Tuman markazi": "Qumqo'rg'on"},
-            "Muzrabot tumani": {"Tuman markazi": "Muzrabot"},
-             
-          }
-        },
-        "Samarqand viloyati": {
-          "tumanlar": {
-            "Samarqand tumani": {"Tuman markazi": "Samarqand"},
-            "Paxtachi tumani": {"Tuman markazi": "Paxtachi"},
-            "Ishtixon tumani": {"Tuman markazi": "Ishtixon"},
-            "Jomboy tumani": {"Tuman markazi": "Jomboy"},
-            "Narpay tumani": {"Tuman markazi": "Narpay"},
-            "Kattaqo'rg'on tumani": {"Tuman markazi": "Kattaqo'rg'on"},
-            "Oqdaryo tumani": {"Tuman markazi": "Oqdaryo"},
-            "Pastdarg'om tumani": {"Tuman markazi": "Pastdarg'om"},
-            "Urgut tumani": {"Tuman markazi": "Urgut"},
-            "Samarkand shahar": {"Tuman markazi": "Samarqand"}
-          }
-        },
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-          "Sirdaryo viloyati": {
-            "tumanlar": {
-              "Guliston tumani": {"Tuman markazi": "Guliston"},
-              "Sirdaryo tumani": {"Tuman markazi": "Sirdaryo"},
-              "Mirzaobod tumani": {"Tuman markazi": "Mirzaobod"},
-              "Boyovut tumani": {"Tuman markazi": "Boyovut"},
-              "Shirin tumani": {"Tuman markazi": "Shirin"},
-              "Oqoltin tumani": {"Tuman markazi": "Oqoltin"},
-              "Xovos tumani": {"Tuman markazi": "Xovos"},
-              "Yangiyer tumani": {"Tuman markazi": "Yangiyer"},
-              "Arnasoy tumani": {"Tuman markazi": "Arnasoy"}
-            }
-          },
-          "Toshkent shahr": {
-            "tumanlar": {
-              "Chilonzor tumani": {"Tuman markazi": "Chilonzor"},
-              "Mirzo-Ulug'bek tumani": {"Tuman markazi": "Mirzo-Ulug'bek"},
-              "Mirobod tumani": {"Tuman markazi": "Mirobod"},
-              "Yunusobod tumani": {"Tuman markazi": "Yunusobod"},
-              "Sergeli tumani": {"Tuman markazi": "Sergeli"},
-              "Shayxontohur tumani": {"Tuman markazi": "Shayxontohur"},
-              "Almazar tumani": {"Tuman markazi": "Almazar"},
-              "Samarqand tumani": {"Tuman markazi": "Samarqand"},
-              "Bektemir tumani": {"Tuman markazi": "Bektemir"},
-              "Yakkasaroy tumani": {"Tuman markazi": "Yakkasaroy"}
-            }
-          }
-        }
-        
-      
-      
-    
-    
-    
-    
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        // Telegram sozlamalari
+ 
+// Telegram sozlamalari
 const botToken = '7747931873:AAEx8TM-ddgYOQtnr6cyGGnT1nzC7ElG4u0';
 const chatId = '5838205785';  // Shaxsiy chat ID
 const groupId = '-4717816493';  // Guruh ID
 
 // Form va elementlarni olish
 const form = document.getElementById('order-form');
-const regionSelect = document.getElementById('region');
-const citySelect = document.getElementById('city');
 const districtInput = document.getElementById('district');
-
-// Viloyat va shahar ma'lumotlari
- 
-
-// Selectni to'ldirish uchun funksiya
-function populateSelect(select, options) {
-    select.innerHTML = '<option value="">Tanlang</option>';
-    options.forEach(option => {
-        const opt = document.createElement('option');
-        opt.value = option;
-        opt.textContent = option;
-        select.appendChild(opt);
-    });
-}
-
-// Viloyatni tanlash
-regionSelect.addEventListener('change', () => {
-    const selectedRegion = regions[regionSelect.value];
-    if (selectedRegion) {
-        populateSelect(citySelect, Object.keys(selectedRegion.tumanlar));
-    } else {
-        citySelect.innerHTML = '<option value="">Tanlang</option>';
-    }
-});
-
-// Viloyatlarni yuklash
-populateSelect(regionSelect, Object.keys(regions));
+const timeSelect = document.getElementById('time');
 
 // Form yuborish
 form.addEventListener('submit', async (event) => {
@@ -792,11 +555,8 @@ form.addEventListener('submit', async (event) => {
     // Form ma'lumotlarini olish
     const name = document.getElementById('name').value;
     const phone = document.getElementById('mobile_code').value;
-    const region = document.getElementById('region').value;
-    const city = document.getElementById('city').value;
     const district = districtInput.value;
-    const comment = document.getElementById('comment').value;
-    const time = document.getElementById('time').value;
+    const time = timeSelect.value;
 
     const message = `
 📝 *⚫️ Yangi buyurtma 🥳 Beezee*  📝
@@ -805,15 +565,10 @@ form.addEventListener('submit', async (event) => {
 
 📞 *Telefon*: ${phone}
 
-🌍 *Viloyat*: ${region}
-
-🏙 *Shahar*: ${city}
-
 📍 *Manzil*: ${district || "Ko'rsatilmagan"}
 
-✉️ *Izoh*: ${comment || "Yo'q"}
-
-⏰ *Bog'lanish vaqti*: ${time === "morning" ? "Kunning birinchi yarmi" : "Kunning ikkinchi yarmi"}
+⏰ *Bog'lanish vaqti*: 
+${time === "morning" ? "Kunning birinchi yarmi" : time === "afternoon" ? "Kunning ikkinchi yarmi" : "Farqi yo'q"}
 `;
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
@@ -833,7 +588,10 @@ form.addEventListener('submit', async (event) => {
             body: JSON.stringify({ chat_id: groupId, text: message, parse_mode: 'Markdown' }),
         });
 
-   
+        // Modalni ko'rsatish
+        document.getElementById('successModal').style.display = 'block';
+
+        // Formni tozalash
         form.reset();
     } catch (error) {
         console.error('Xatolik:', error);
@@ -841,153 +599,7 @@ form.addEventListener('submit', async (event) => {
     }
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Modal oynani olish
-const successModal = document.getElementById('successModal');
-const closeModalBtn = document.getElementById('closeModal');
-
-// Form yuborish
-form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    // Form ma'lumotlarini olish
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('mobile_code').value.trim();
-    const region = document.getElementById('region').value;
-    const city = document.getElementById('city').value;
-    const district = districtInput.value.trim();
-    const comment = document.getElementById('comment').value.trim();
-    const time = document.getElementById('time').value;
-
-    // Barcha maydonlarni tekshirish
-    if (!name || !phone || !region || !city) {
-        alert("Iltimos, barcha maydonlarni to'ldiring.");
-        return;
-    }
-
-    const message = `
-📝 *⚫️ Yangi buyurtma 🥳 Beezee*  📝
-
-📛 *Ism*: ${name}
-
-📞 *Telefon*: ${phone}
-
-🌍 *Viloyat*: ${region}
-
-🏙 *Shahar*: ${city}
-
-📍 *Manzil*: ${district || "Ko'rsatilmagan"}
-
-✉️ *Izoh*: ${comment || "Yo'q"}
-
-⏰ *Bog'lanish vaqti*: ${time === "morning" ? "Kunning birinchi yarmi" : "Kunning ikkinchi yarmi"}
-`;
-
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-    try {
-        // Shaxsiy chatga xabar yuborish
-        await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' }),
-        });
-
-        // Guruhga xabar yuborish
-        await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: groupId, text: message, parse_mode: 'Markdown' }),
-        });
-
-        // Modal oynani ko'rsatish
-        successModal.style.display = 'block';
-        form.reset();
-    } catch (error) {
-        console.error('Xatolik:', error);
-        alert('Xatolik yuz berdi! Qaytadan urinib ko‘ring.');
-    }
+// Modalni yopish
+document.getElementById('closeModal').addEventListener('click', () => {
+    document.getElementById('successModal').style.display = 'none';
 });
-
-// Modal tugmasi bosilganda home ga yo'naltirish
-closeModalBtn.addEventListener('click', () => {
-    successModal.style.display = 'none';
-    window.location.href = "#home";
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Tusbulari tugmasini olish
-const tusbulariBtn = document.getElementById('closeModal');
-
-// Tugma bosilganda kerakli joyga o'tish
-tusbulariBtn.addEventListener('click', () => {
-    window.location.href = "#header-area";
-});
-
-
-
-
-
-
-
-window.addEventListener("scroll", function() {
-  const button = document.querySelector(".fixed-btn-container");
-
-  if (window.scrollY > document.querySelector("#home").offsetHeight) {
-    button.style.display = "block";  // Tugmani ko'rsatish
-  } else {
-    button.style.display = "none";   // Tugmani yashirish
-  }
-});
-
-
-
-
-
-
-
-
-

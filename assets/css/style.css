@@ -2948,6 +2948,52 @@ select:focus {
 
 
 
+ 
+.fixed-btn {
+  
+  font-weight: bold;
+  border: none;
+  text-decoration: none;
+  background-color: goldenrod !important;
+  color: white;
+  font-size: 18px;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0px 5px 15px rgba(255, 157, 0, 0.796);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: pulse 1.5s infinite; /* Pulsating animation */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.hide-btn {
+  display: none; /* Hide the button */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
