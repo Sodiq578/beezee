@@ -157,47 +157,41 @@
         class="header-hero bg_cover"
         style="background-image: url(assets/images/header/banner-bg.svg)"
       >
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8">
-              <div class="header-hero-content text-center">
-                <h3
-                  class="header-sub-title wow fadeInUp"
-                  data-wow-duration="1.3s"
-                  data-wow-delay="0.2s"
-                >
-                  ORGANIC
-                </h3>
-                <h2
-                  class="header-title wow fadeInUp"
-                  data-wow-duration="1.3s"
-                  data-wow-delay="0.5s"
-                >
-                  DR BEE ZEE
-                </h2>
-              </div>
-              <!-- header hero content -->
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <div class="header-hero-content text-center">
+              <h3 class="header-sub-title">ORGANIC</h3>
+              <h2 class="header-title">DR BEE ZEE</h2>
             </div>
           </div>
-          <!-- row -->
-          <div class="row">
-            <div class="col-lg-12">
-              <div
-                class="header-hero-image text-center wow fadeIn"
-                data-wow-duration="1.3s"
-                data-wow-delay="1.4s"
-              >
-                <img
-                  class="hero-img"
-                  src="assets/newImg/rasim2.jpg"
-                  alt="hero"
-                />
-              </div>
-              <!-- header hero image -->
-            </div>
-          </div>
-          <!-- row -->
         </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="header-hero-image text-center">
+              <img class="hero-img" src="assets/newImg/rasim2.jpg" alt="hero">
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    
+      <!-- Modal -->
+      <div id="consultationModal" class="modal">
+        <div class="modal-content-bir">
+          <h3>Mutaxasislar tomonidan bepul konsultatsiya olish uchun!</h3>
+          <p>Sizni qiziqtirgan savollarga javob beriladi.</p>
+          <form id="consultationRequestForm">
+            <input type="text" id="name" placeholder="Ismingizni kiriting" required>
+            <input type="tel" id="phone" placeholder="Telefon raqamingizni kiriting" required>
+            <button type="submit">Yuborish</button>
+          </form>
+        </div>
+      </div>
+      
+      
+      
+    
         <!-- container -->
         <div id="particles-1" class="particles"></div>
       </div>
@@ -222,6 +216,15 @@
               >
                 <img src="./assets/newImg/sertifikatHalal.png" alt="brand" />
               </div>
+       <div
+                class="single-logo mt-30"
+                data-aos="fade-in"
+                data-aos-duration="1500"
+                data-aos-delay="600"
+              >
+                <img src="assets/newImg/sertifikatNatural.png" alt="brand" />
+              </div>
+
               <div
                 class="single-logo mt-30"
                 data-aos="fade-in"
@@ -230,14 +233,9 @@
               >
                 <img src="assets/newImg/sertifikaiso.svg" alt="brand" />
               </div>
-              <div
-                class="single-logo mt-30"
-                data-aos="fade-in"
-                data-aos-duration="1500"
-                data-aos-delay="600"
-              >
-                <img src="assets/newImg/sertifikatNatural.png" alt="brand" />
-              </div>
+
+
+       
               <div
                 class="single-logo mt-30"
                 data-aos="fade-in"
@@ -567,7 +565,7 @@
             </div>
             <div class="counter">
               <div class="counter-value" data-number="12000">0</div>
-              <p class="counter-label">Foydalanuvchilar tavsiyasi</p>
+              <p class="counter-label">tavsiya qilganlar</p>
             </div>
           </div>
         </div>
@@ -606,9 +604,9 @@
                         <!-- Bog'lanish vaqti -->
                         <label for="time">Bog'lanish vaqti</label>
                         <select id="time">
+                          <option value="anytime">Farqi yo'q</option> <!-- Yangi variant qo'shildi -->
                             <option value="morning" selected>Kunning birinchi yarmida</option>
                             <option value="afternoon">Kunning ikkinchi yarmida</option>
-                            <option value="anytime">Farqi yo'q</option> <!-- Yangi variant qo'shildi -->
                         </select>
         
                         <!-- Yuborish tugmasi -->
@@ -619,7 +617,7 @@
         </div>
         
         <div id="successModal" class="modal" style="display: none;">
-            <div class="modal-content">
+            <div class="modal-content-pas">
                 <p>Sizning buyurtmangiz qabul qilindi ✅ <br> Mutaxassislarimiz tez orada siz bilan bog'lanishadi.</p>
                 <a href="#home"><button id="closeModal" class="main-btn-sotibOlish">Tushunarli</button></a>
             </div>
