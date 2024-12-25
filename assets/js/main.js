@@ -625,20 +625,21 @@ document.getElementById('closeModal').addEventListener('click', () => {
 
 
 
+
+
+
+
+
+// modal 
 // Modal va form elementlarini olish
 const modal = document.getElementById('consultationModal');
 const consultationRequest = document.getElementById('consultationRequestForm');
 const navbarArea = document.querySelector('.navbar-area');
 
-// Sahifa yuklanganda modal faqat bir marta ko'rsatiladi
+// Sahifa yuklanganda modal avtomatik ravishda ochilsin va navbarni yashirish
 window.addEventListener('load', () => {
-  // Agar "modalShown" key mavjud bo'lsa, modalni ko'rsatmaslik
-  if (!localStorage.getItem('modalShown')) {
-    modal.style.display = 'flex';
-    navbarArea.classList.add('hidden'); // Modal ochilganda navbarni yashirish
-    // "modalShown" keyni localStoragega saqlash
-    localStorage.setItem('modalShown', 'true');
-  }
+  modal.style.display = 'flex';
+  navbarArea.classList.add('hidden'); // Modal ochilganda navbarni yashirish
 });
 
 // Formani yuborish jarayoni
@@ -649,37 +650,42 @@ consultationRequest.addEventListener('submit', (e) => {
   const name = document.getElementById('name').value;
   const phone = document.getElementById('phone').value;
 
-  // Agar formaning barcha maydonlari to'ldirilgan bo'lsa
-  if (name && phone) {
-    // Telegram bot tokeni va chat_id
-    const botToken = '7117145241:AAECnmWRZMl4zQb2H60JyARvvZ-58Tab3OE';
-    const chatId = '-4620974254';
+  // Telegram bot tokeni va chat_id
+  const botToken = '7117145241:AAECnmWRZMl4zQb2H60JyARvvZ-58Tab3OE';
+  const chatId = '-4620974254';
 
-    // Yuboriladigan xabar
-    const message = ` 🟡Beezee🟡 saytiga yangi foydalanuchi kirdi:\n\n
-    👤Ism: ${name} \n 
-    📱Telefon: ${phone} `;
+  // Yuboriladigan xabar
+  const message = ` 🟡Beezee🟡 saytiga yangi foydalanuchi kirdi:\n\n
+  
+  👤Ism: ${name} \n 
+  📱Telefon: ${phone} `;
 
-    // Telegram API orqali xabar yuborish
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message,
-      }),
+  // Telegram API orqali xabar yuborish
+  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: message,
+    }),
+  })
+    .then(() => {
+      // Xabar yuborilgandan so'ng modalni yopish va navbarni qayta ko'rsatish
+      modal.style.display = 'none';
+      navbarArea.classList.remove('hidden'); // Navbarni yana ko'rsatish
+      // Formani tozalash
+      consultationRequest.reset();
     })
-      .then(() => {
-        // Xabar yuborilgandan so'ng modalni yopish va navbarni qayta ko'rsatish
-        modal.style.display = 'none';
-        navbarArea.classList.remove('hidden'); // Navbarni yana ko'rsatish
-        // Formani tozalash
-        consultationRequest.reset();
-      })
-      .catch((error) => {
-        console.error('Xatolik yuz berdi:', error);
-      });
-  } else {
-    alert('Iltimos, barcha maydonlarni to\'ldiring!');
+    .catch((error) => {
+      console.error('Xatolik yuz berdi:', error);
+    });
+});
+
+// Modalni tashqi qismini bosganda yopmaslik
+modal.addEventListener('click', (e) => {
+  // Agar modalning o'zida bosilsa, hech narsa bo'lmasin
+  if (e.target !== modal) {
+    return;
   }
+  // Agar modalning tashqi qismini bosilsa, hech narsa bo'lmasin
 });
