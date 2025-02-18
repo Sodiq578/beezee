@@ -537,11 +537,14 @@ window.addEventListener('load', checkButtonVisibility);
 
 
 
- 
+
+
+
 // Telegram sozlamalari
 const botToken = '7117145241:AAECnmWRZMl4zQb2H60JyARvvZ-58Tab3OE';
 const chatId = '-4620974254';
-const groupId = '-4717816493';  // Guruh ID
+const groupId1 = '-4717816493';  // Guruh ID
+const groupId2 = '-4738248846';  // Yangi guruh ID
 
 // Form va elementlarni olish
 const form = document.getElementById('order-form');
@@ -574,19 +577,24 @@ ${time === "morning" ? " Farqi yo'q" : time === "afternoon" ? "Kunning ikkinchi 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
 
     try {
-        // Shaxsiy chatga xabar yuborish
-        await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' }),
-        });
-
-        // Guruhga xabar yuborish
-        await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: groupId, text: message, parse_mode: 'Markdown' }),
-        });
+        // Xabarni shaxsiy chat va guruhlarga yuborish
+        await Promise.all([
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: 'Markdown' }),
+            }),
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: groupId1, text: message, parse_mode: 'Markdown' }),
+            }),
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: groupId2, text: message, parse_mode: 'Markdown' }),
+            })
+        ]);
 
         // Modalni ko'rsatish
         document.getElementById('successModal').style.display = 'block';
@@ -605,32 +613,6 @@ document.getElementById('closeModal').addEventListener('click', () => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// modal 
 // Modal va form elementlarini olish
 const modal = document.getElementById('consultationModal');
 const consultationRequest = document.getElementById('consultationRequestForm');
@@ -651,24 +633,29 @@ consultationRequest.addEventListener('submit', (e) => {
   const phone = document.getElementById('phone').value;
 
   // Telegram bot tokeni va chat_id
-  const botToken = '7117145241:AAECnmWRZMl4zQb2H60JyARvvZ-58Tab3OE';
-  const chatId = '-4620974254';
+  const botChatId = '-4620974254'; // Bot uchun chat ID
+  const groupChatId1 = '7609164487'; // Guruh uchun chat ID
+  const groupChatId2 = '-4738248846'; // Yangi guruh uchun chat ID
 
   // Yuboriladigan xabar
-  const message = ` 🟡Beezee🟡 saytiga yangi foydalanuchi kirdi:\n\n
-  
+  const message = ` 🟡Beezee🟡 saytiga yangi foydalanuvchi kirdi:\n\n
   👤Ism: ${name} \n 
   📱Telefon: ${phone} `;
 
-  // Telegram API orqali xabar yuborish
-  fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      chat_id: chatId,
-      text: message,
-    }),
-  })
+  // Telegram API orqali xabar yuborish (Botga)
+  const sendMessage = (chatId) => {
+    return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+      }),
+    });
+  };
+
+  // Xabarni botga va guruhlarga yuborish
+  Promise.all([sendMessage(botChatId), sendMessage(groupChatId1), sendMessage(groupChatId2)])
     .then(() => {
       // Xabar yuborilgandan so'ng modalni yopish va navbarni qayta ko'rsatish
       modal.style.display = 'none';
@@ -679,13 +666,4 @@ consultationRequest.addEventListener('submit', (e) => {
     .catch((error) => {
       console.error('Xatolik yuz berdi:', error);
     });
-});
-
-// Modalni tashqi qismini bosganda yopmaslik
-modal.addEventListener('click', (e) => {
-  // Agar modalning o'zida bosilsa, hech narsa bo'lmasin
-  if (e.target !== modal) {
-    return;
-  }
-  // Agar modalning tashqi qismini bosilsa, hech narsa bo'lmasin
-});
+});    
